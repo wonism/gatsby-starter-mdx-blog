@@ -31,6 +31,8 @@ $ npm run build
 - All codes are written in [TypeScript](https://www.typescriptlang.org)
 - [Google Analytics](https://analytics.google.com)
 - Sitemap and RSS Feed
+- Draft version of your post
+  - You can just add `draft: true` below the date in mdx file
 
 ## You SHOULD change...
 - Your picture in `src/contents/images/profile.png`
@@ -44,3 +46,4 @@ $ npm run build
 - [ ] Pagination
 - [ ] Comment w/ utterances
 - [ ] CLI
+- [ ] Themes
