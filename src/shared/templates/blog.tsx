@@ -4,9 +4,8 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { css } from '@emotion/core';
 
 import { Mdx } from '@utils/types';
-import Head from '@shared/Head';
+import Seo from '@shared/Seo';
 import Title from '@shared/Title';
-import Description from '@shared/Description';
 import Bio from '@shared/Bio';
 
 import { RendererWrapper, Navigation } from './styled';
@@ -17,6 +16,7 @@ const Blog = ({
       frontmatter: {
         title,
         date,
+        tags,
       },
       body,
       excerpt,
@@ -29,10 +29,8 @@ const Blog = ({
 }: PageProps<{ mdx: Mdx }, { previous: Mdx | null, next: Mdx | null }>) => (
   <>
     <Title>
-      <Head title={title} />
+      <Seo title={title} description={excerpt} keywords={tags?.split(',')} showTitle />
     </Title>
-
-    <Description description={excerpt} />
 
     <small css={css`display: block; margin: 24px auto 12px;`}>
       {date}
@@ -91,6 +89,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "YYYY.MM.DD HH:mm:ss")
+        tags
       }
       body
     }

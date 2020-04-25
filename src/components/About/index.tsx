@@ -3,8 +3,14 @@ import { StaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 import { css } from '@emotion/core';
 
-import Head from '@shared/Head';
 import Title from '@shared/Title';
+import Seo from '@shared/Seo';
+
+const bio = `Write your biography.
+Identify your purpose and audience.
+Before you get started writing, you need to know who you're writing for.
+Your bio is your first introduction to your audience.
+It should quickly and effectively communicate who you are and what you do.`;
 
 const About = (): React.ReactElement => (
   <StaticQuery
@@ -12,7 +18,7 @@ const About = (): React.ReactElement => (
     render={(data) => (
       <section>
         <Title>
-          <Head title="About" />
+          <Seo title="About" description={bio} showTitle />
           <hr />
         </Title>
         <p css={css`font-size: 20px; line-height: 1.4;`}>
@@ -21,11 +27,7 @@ const About = (): React.ReactElement => (
             alt={data.site.siteMetadata.author}
             css={css`float: right; margin-left: 0.5em; border-radius: 50%;`}
           />
-          Write your biography.
-          Identify your purpose and audience.
-          Before you get started writing, you need to know who you're writing for.
-          Your bio is your first introduction to your audience.
-          It should quickly and effectively communicate who you are and what you do.
+          {bio}
         </p>
       </section>
     )}

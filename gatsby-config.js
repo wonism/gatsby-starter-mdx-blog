@@ -1,5 +1,7 @@
 const isProd = process.env.NODE_MODE === 'production';
 
+const pkg = require('./package.json');
+
 module.exports = {
   siteMetadata: {
     title: 'Gatsby Starter MDX Blog',
@@ -7,6 +9,7 @@ module.exports = {
     author: 'wonism',
     mail: 'yocee57@gmail.com',
     siteUrl: 'https://example.com',
+    keywords: pkg.keywords,
   },
   plugins: [
     {

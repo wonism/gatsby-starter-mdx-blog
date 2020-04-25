@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import pkg from '../package.json';
 
 const author = 'wonism';
-const keywords = pkg.keywords.join(', ');
 
 export default class HTML extends Component<any> { // eslint-disable-line @typescript-eslint/no-explicit-any
   public render(): React.ReactElement {
@@ -31,7 +29,6 @@ export default class HTML extends Component<any> { // eslint-disable-line @types
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover"
           />
-          <meta name="keywords" content={keywords} />
           <meta name="author" content={author} />
           <meta property="og:site_name" content="Gatsby Starter MDX Blog" />
           <meta property="og:type" content="website" />

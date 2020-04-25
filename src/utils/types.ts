@@ -7,6 +7,7 @@ interface SiteMetadata {
   description: string;
   author: string;
   mail: string;
+  keywords: string[];
 }
 
 export interface Site {
@@ -16,6 +17,7 @@ export interface Site {
 interface Frontmatter {
   title: string;
   date: string;
+  tags?: string;
 }
 
 export interface Mdx {

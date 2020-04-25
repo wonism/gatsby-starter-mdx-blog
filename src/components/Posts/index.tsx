@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
 
-import Head from '@shared/Head';
+import Seo from '@shared/Seo';
 import Article from '@shared/Article';
 import { Mdx } from '@utils/types';
 
@@ -13,7 +13,7 @@ const Posts = (): React.ReactElement => (
 
       return (
         <>
-          <Head title="Posts" hide />
+          <Seo title="Posts" description="These are posts that were written by me." />
           {posts.map((post, index, arr) => (
             <Article key={post.node.id}>
               <h2>

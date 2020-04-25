@@ -17,6 +17,7 @@ exports.createSchemaCustomization = ({ actions }) => {
     type MdxFrontmatter {
       title: String!
       draft: Boolean
+      tags: String
       # TODO: Categorizing
       # category: String
     }

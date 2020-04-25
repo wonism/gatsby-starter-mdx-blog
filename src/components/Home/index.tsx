@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, StaticQuery, graphql } from 'gatsby';
 
-import Head from '@shared/Head';
+import Seo from '@shared/Seo';
 import Title from '@shared/Title';
 import Article from '@shared/Article';
 import { Mdx } from '@utils/types';
@@ -16,7 +16,11 @@ const Home = (): React.ReactElement => (
       return (
         <>
           <Title>
-            <Head title={title} />
+            <Seo
+              title={title}
+              description="Welcome to my personal blog."
+              showTitle
+            />
             <hr />
           </Title>
           {posts.map((post, index, arr) => (

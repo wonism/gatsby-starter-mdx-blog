@@ -1,12 +1,18 @@
 import React from 'react';
+import { css } from '@emotion/core';
 
-import Head from '@shared/Head';
+import Title from '@shared/Title';
+import Seo from '@shared/Seo';
+
+const content = 'You just hit a route that doesn\'t exist... the sadness.';
 
 const NotFound: React.FC<{}> = () => (
   <>
-    <Head title="NOT FOUND" />
-    <p>
-      You just hit a route that doesn&#39;t exist... the sadness.
+    <Title>
+      <Seo title="Page not found" description={content} showTitle />
+    </Title>
+    <p css={css`margin-top: 40px;`}>
+      {content}
     </p>
   </>
 );
