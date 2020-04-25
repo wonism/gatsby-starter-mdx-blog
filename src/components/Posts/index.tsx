@@ -14,7 +14,7 @@ const Posts = (): React.ReactElement => (
       return (
         <>
           <Seo title="Posts" description="These are posts that were written by me." />
-          {posts.map((post, index, arr) => (
+          {posts.map((post) => (
             <Article key={post.node.id}>
               <h2>
                 <Link to={post.node.fields.slug}>

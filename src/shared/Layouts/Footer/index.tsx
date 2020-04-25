@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { maxWidth } from '@constants/styles';
+
 import { Border, Footer as Foot } from './styled';
 
 const Footer = (): React.ReactElement => (

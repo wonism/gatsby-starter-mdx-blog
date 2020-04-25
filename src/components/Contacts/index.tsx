@@ -12,7 +12,11 @@ const Contacts = (): React.ReactElement => (
     render={(data) => (
       <section>
         <Title>
-          <Seo title="Contacts" description="You have any question about me? Contact me to get more information." />
+          <Seo
+            title="Contacts"
+            description="You have any question about me? Contact me to get more information."
+            showTitle
+          />
           <hr />
         </Title>
         <Form to={data.site.siteMetadata.mail} />

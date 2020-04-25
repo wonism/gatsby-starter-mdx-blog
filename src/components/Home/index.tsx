@@ -23,7 +23,7 @@ const Home = (): React.ReactElement => (
             />
             <hr />
           </Title>
-          {posts.map((post, index, arr) => (
+          {posts.map((post) => (
             <Article key={post.node.id}>
               <h2>
                 <Link to={post.node.fields.slug}>

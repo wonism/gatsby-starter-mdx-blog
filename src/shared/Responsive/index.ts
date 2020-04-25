@@ -7,13 +7,13 @@ interface OnlyScreen {
 }
 
 export const NonMobile = styled.div<OnlyScreen>`
-  @media ${p => (p.onlyScreen ?? false) ? 'screen' : 'all'} and (max-width: ${mobileWidth}px) {
+  @media ${(p) => ((p.onlyScreen ?? false) ? 'screen' : 'all')} and (max-width: ${mobileWidth}px) {
     display: none;
   }
 `;
 
 export const Mobile = styled.div<OnlyScreen>`
-  @media ${p => (p.onlyScreen ?? false) ? 'screen' : 'all'} and (min-width: ${mobileWidth + 1}px) {
+  @media ${(p) => ((p.onlyScreen ?? false) ? 'screen' : 'all')} and (min-width: ${mobileWidth + 1}px) {
     display: none;
   }
 `;

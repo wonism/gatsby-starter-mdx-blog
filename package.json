@@ -1,9 +1,10 @@
 {
   "name": "gatsby-starter-mdx-blog",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Gatsby Starter for Blog with MDX",
   "main": "n/a",
   "scripts": {
+    "new": "./scripts/new.sh",
     "clean": "gatsby clean",
     "start": "gatsby develop -H 0.0.0.0",
     "build": "NODE_ENV=production gatsby build",
@@ -33,6 +34,7 @@
     "focus-visible": "^5.1.0",
     "gatsby": "^2.20.18",
     "gatsby-image": "^2.3.4",
+    "gatsby-plugin-mdx": "^1.1.11",
     "observable-hooks": "^2.3.4",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -83,7 +85,6 @@
     "gatsby-plugin-emotion": "^4.2.1",
     "gatsby-plugin-feed": "^2.4.3",
     "gatsby-plugin-google-analytics": "^2.2.4",
-    "gatsby-plugin-mdx": "^1.1.10",
     "gatsby-plugin-offline": "^3.1.2",
     "gatsby-plugin-react-helmet": "^3.2.2",
     "gatsby-plugin-robots-txt": "^1.5.0",

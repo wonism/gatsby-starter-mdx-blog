@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { Link } from 'gatsby';
 
 import { gnbHeight, border } from '@constants/styles';
 

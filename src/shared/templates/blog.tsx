@@ -26,7 +26,7 @@ const Blog = ({
     previous,
     next,
   },
-}: PageProps<{ mdx: Mdx }, { previous: Mdx | null, next: Mdx | null }>) => (
+}: PageProps<{ mdx: Mdx }, { previous: Mdx | null; next: Mdx | null }>) => (
   <>
     <Title>
       <Seo title={title} description={excerpt} keywords={tags?.split(',')} showTitle />
@@ -94,4 +94,4 @@ export const pageQuery = graphql`
       body
     }
   }
-`
+`;

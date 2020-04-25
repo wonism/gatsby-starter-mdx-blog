@@ -99,11 +99,12 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-explicit-any': [error, { ignoreRestArgs: true }],
+    '@typescript-eslint/no-parameter-properties': [error, { allows: ['readonly'] }],
     '@typescript-eslint/no-unused-vars': [
       error,
       { ignoreRestSiblings: true },
     ],
-    '@typescript-eslint/no-parameter-properties': [error, { allows: ['readonly'] }],
+    '@typescript-eslint/no-use-before-define': off,
     //- import
     'import/extensions': off,
     'import/newline-after-import': [error, { count: 1 }],
@@ -191,6 +192,11 @@ module.exports = {
     rules: {
       'react/no-danger': off,
       'react/prefer-stateless-function': off,
+    },
+  }, {
+    files: ['src/utils/types.ts'],
+    rules: {
+      '@typescript-eslint/no-explicit-any': off,
     },
   }, {
     files: [
