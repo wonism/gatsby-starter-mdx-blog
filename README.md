@@ -24,6 +24,8 @@ $ npm run build
 ```
 
 ## Features
+- Support post scaffolding
+  - You can just run `npm run new` then input url & title. (slugify the url automatically.)
 - Support writing blog contents w/ [MDX](https://github.com/mdx-js)
 - Search Engine Optimization w/ [React Helmet](https://github.com/nfl/react-helmet)
 - Contacts Form w/ [React Mail Form](https://github.com/wonism/react-mail-form)
@@ -42,8 +44,8 @@ $ npm run build
   - google analytics tracking id
 
 ## Todo
-- [ ] Categorize
-- [ ] Pagination
+- [ ] Background image for a post
 - [ ] Comment w/ utterances
-- [ ] CLI
+- [ ] Pagination
+- [ ] Categorize
 - [ ] Themes
