@@ -6,7 +6,7 @@ export const gnbHeight = 48;
 export const footerHeight = 32;
 
 export const border = `
-  content: '';;
+  content: '';
   display: block;
   height: 1px;
   background: linear-gradient(to top, rgba(85, 85, 85, .3), transparent);
