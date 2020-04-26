@@ -30,14 +30,13 @@ module.exports = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: ['.mdx', '.md'],
-        plugins: [
-          'gatsby-remark-images',
-        ],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 1200,
+              sizeByPixelDensity: true,
+              linkImagesToOriginal: false,
             },
           },
           {
@@ -46,19 +45,18 @@ module.exports = {
               wrapperStyle: 'margin-bottom: 1.0725rem',
             },
           },
+          'gatsby-remark-prismjs',
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
         ],
       },
     },
-    /*
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: '<<YOUR_OWN_KEY>>',
       },
     },
-    */
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     'gatsby-transformer-json',

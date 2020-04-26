@@ -44,7 +44,6 @@ $ npm run build
   - google analytics tracking id
 
 ## Todo
-- [ ] Background image for a post
 - [ ] Comment w/ utterances
 - [ ] Pagination
 - [ ] Categorize

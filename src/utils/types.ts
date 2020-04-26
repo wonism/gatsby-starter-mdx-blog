@@ -18,6 +18,7 @@ interface Frontmatter {
   title: string;
   date: string;
   tags?: string;
+  image?: string;
 }
 
 export interface Mdx {

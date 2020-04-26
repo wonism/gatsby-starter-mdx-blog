@@ -18,6 +18,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String!
       draft: Boolean
       tags: String
+      thumbnail: String
       # TODO: Categorizing
       # category: String
     }
@@ -29,7 +30,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const component = resolve('./src/shared/templates/blog.tsx');
 
-  const allMdx = await graphql(`
+  const result = await graphql(`
     {
       allMdx(
         limit: 1000
@@ -44,22 +45,37 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             frontmatter {
               title
+              thumbnail
             }
-            body: rawBody
           }
         }
       }
+
+      allFile(
+        filter: { base: { eq: "profile.png" } }
+      ) {
+        edges {
+          node {
+            base
+            publicURL
+          }
+        }
+      }
+
     }
   `);
 
-  allMdx.data.allMdx.edges.forEach((post, index, posts) => {
+  result.data.allMdx.edges.forEach((post, index, posts) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node;
     const next = index === 0 ? null : posts[index - 1].node;
+    const thumbnailData = result.data.allFile.edges.find(({ node: { base } }) => base === post.node.frontmatter.thumbnail);
+    const thumbnail = thumbnailData != null ? thumbnailData.node.publicURL : null;
 
     createPage({
       path: post.node.fields.slug,
       component,
       context: {
+        thumbnail,
         slug: post.node.fields.slug,
         previous,
         next,
@@ -77,7 +93,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: 'slug',
       node,
-      value,
+      value: `/posts${value}`,
     });
   }
 };

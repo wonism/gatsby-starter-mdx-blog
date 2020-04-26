@@ -7,11 +7,12 @@ import { visuallyHidden } from '@constants/styles';
 interface Props {
   title: string;
   description: string;
+  thumbnail?: string;
   keywords?: string[];
   showTitle?: boolean;
 }
 
-const Seo = ({ title, description, keywords, showTitle = false }: Props): React.ReactElement => (
+const Seo = ({ title, description, thumbnail = '', keywords, showTitle = false }: Props): React.ReactElement => (
   <StaticQuery
     query={seoQuery}
     render={(data) => {
@@ -32,6 +33,9 @@ const Seo = ({ title, description, keywords, showTitle = false }: Props): React.
             }, {
               name: 'keywords',
               content: keywordsContent,
+            }, {
+              name: 'og:image',
+              content: thumbnail,
             }]}
           >
             <title>

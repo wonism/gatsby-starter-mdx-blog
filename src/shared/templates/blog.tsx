@@ -7,8 +7,9 @@ import { Mdx } from '@utils/types';
 import Seo from '@shared/Seo';
 import Title from '@shared/Title';
 import Bio from '@shared/Bio';
+import { codeHighlight } from '@constants/styles';
 
-import { RendererWrapper, Navigation } from './styled';
+import { ThumbnailFrame, RendererWrapper, Navigation } from './styled';
 
 const Blog = ({
   data: {
@@ -23,13 +24,23 @@ const Blog = ({
     },
   },
   pageContext: {
+    thumbnail,
     previous,
     next,
   },
-}: PageProps<{ mdx: Mdx }, { previous: Mdx | null; next: Mdx | null }>) => (
+}: PageProps<{ mdx: Mdx }, { thumbnail: string | null; previous: Mdx | null; next: Mdx | null }>) => (
   <>
+    {thumbnail != null ? (
+      <ThumbnailFrame>
+        <img
+          src={thumbnail}
+          alt=""
+          role="presentation"
+        />
+      </ThumbnailFrame>
+    ) : null}
     <Title>
-      <Seo title={title} description={excerpt} keywords={tags?.split(',')} showTitle />
+      <Seo title={title} description={excerpt} keywords={tags?.split(',')} thumbnail={thumbnail ?? undefined} showTitle />
     </Title>
 
     <small css={css`display: block; margin: 24px auto 12px;`}>
@@ -38,7 +49,7 @@ const Blog = ({
 
     <Bio />
 
-    <RendererWrapper>
+    <RendererWrapper css={codeHighlight}>
       <MDXRenderer>
         {body}
       </MDXRenderer>

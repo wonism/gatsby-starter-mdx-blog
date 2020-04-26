@@ -1,5 +1,28 @@
 import styled from '@emotion/styled';
 
+export const ThumbnailFrame = styled.div`
+  position: relative;
+  margin: -100px auto 50px;
+  height: 200px;
+  overflow: hidden;
+
+  & > img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: auto;
+
+    @supports (object-fit: cover) {
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+`;
+
 export const RendererWrapper = styled.div`
   padding: 40px 0;
   line-height: 1.6;
