@@ -8,6 +8,10 @@ interface SiteMetadata {
   author: string;
   mail: string;
   keywords: string[];
+  github: {
+    id: string;
+    repository: string;
+  };
 }
 
 export interface Site {

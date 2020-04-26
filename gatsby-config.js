@@ -3,13 +3,20 @@ const isProd = process.env.NODE_MODE === 'production';
 const pkg = require('./package.json');
 
 module.exports = {
+  // YOU SHOULD CHANGE SITE META DATA
   siteMetadata: {
+    siteUrl: 'https://example.com',
     title: 'Gatsby Starter MDX Blog',
     description: 'Gatsby Starter for Blog with MDX',
     author: 'wonism',
     mail: 'yocee57@gmail.com',
-    siteUrl: 'https://example.com',
-    keywords: pkg.keywords,
+    keywords: pkg.keywords, // string[]
+    // to use utterances, install the app on https://github.com/apps/utterances
+    // you can find guidances on https://utteranc.es
+    github: {
+      id: 'wonism',
+      repository: 'utterances-test',
+    },
   },
   plugins: [
     {

@@ -24,16 +24,17 @@ $ npm run build
 ```
 
 ## Features
-- Support post scaffolding
+- ⚛️  Support writing blog contents w/ [MDX](https://github.com/mdx-js)
+- 🔮 Comments [Utterances](https://utteranc.es)
+- 🔍 Search Engine Optimization w/ [React Helmet](https://github.com/nfl/react-helmet)
+- ✉️ Contacts Form w/ [React Mail Form](https://github.com/wonism/react-mail-form)
+- 📊 [Google Analytics](https://analytics.google.com)
+- 🗄 Sitemap and RSS Feed
+- 💅 CSS in JS w/ [Emotion](https://emotion.sh/docs/introduction)
+- 📝 All codes are written in [TypeScript](https://www.typescriptlang.org)
+- 🤖 Support post scaffolding
   - You can just run `npm run new` then input url & title. (slugify the url automatically.)
-- Support writing blog contents w/ [MDX](https://github.com/mdx-js)
-- Search Engine Optimization w/ [React Helmet](https://github.com/nfl/react-helmet)
-- Contacts Form w/ [React Mail Form](https://github.com/wonism/react-mail-form)
-- CSS in JS w/ [Emotion](https://emotion.sh/docs/introduction)
-- All codes are written in [TypeScript](https://www.typescriptlang.org)
-- [Google Analytics](https://analytics.google.com)
-- Sitemap and RSS Feed
-- Draft version of your post
+- ✏️ Draft version of your post
   - You can just add `draft: true` below the date in mdx file
 
 ## You SHOULD change...
@@ -44,7 +45,6 @@ $ npm run build
   - google analytics tracking id
 
 ## Todo
-- [ ] Comment w/ utterances
 - [ ] Pagination
 - [ ] Categorize
 - [ ] Themes

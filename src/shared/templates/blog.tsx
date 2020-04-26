@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, graphql, PageProps } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { css } from '@emotion/core';
 
-import { Mdx } from '@utils/types';
+import { Site, Mdx } from '@utils/types';
 import Seo from '@shared/Seo';
 import Title from '@shared/Title';
 import Bio from '@shared/Bio';
 import { codeHighlight } from '@constants/styles';
 
+import Utterances from './Utterances';
 import { ThumbnailFrame, RendererWrapper, Navigation } from './styled';
 
 const Blog = ({
   data: {
+    site: {
+      siteMetadata: {
+        github: {
+          id,
+          repository,
+        },
+      },
+    },
     mdx: {
       frontmatter: {
         title,
@@ -28,7 +37,7 @@ const Blog = ({
     previous,
     next,
   },
-}: PageProps<{ mdx: Mdx }, { thumbnail: string | null; previous: Mdx | null; next: Mdx | null }>) => (
+}: PageProps<{ site: Site, mdx: Mdx }, { thumbnail: string | null; previous: Mdx | null; next: Mdx | null }>) => (
   <>
     {thumbnail != null ? (
       <ThumbnailFrame>
@@ -81,6 +90,8 @@ const Blog = ({
         ) : null}
       </Navigation>
     ) : null}
+
+    <Utterances id={id} repository={repository} />
   </>
 );
 
@@ -90,8 +101,10 @@ export const pageQuery = graphql`
   query($slug: String!) {
     site {
       siteMetadata {
-        title
-        author
+        github {
+          id
+          repository
+        }
       }
     }
     mdx(fields: { slug: { eq: $slug } }) {
