@@ -35,9 +35,9 @@ $ npm run build
 - 🤖 Support post scaffolding
   - You can just run `npm run new` then input url & title. (slugify the url automatically.)
 - ✏️ Draft version of your post
-  - You can just add `draft: true` below the date in mdx file.
-- Support **Category** and **Tag**
-  - You can just add `categories: ["Category"]` and `tags: ["Tag]` below the date in mdx file.
+  - You can just add `draft: true` below the `date` in mdx file.
+- 🔖 Support **Category** and **Tag**
+  - You can just add `categories: ["Category"]` and `tags: ["Tag"]` below the `date` in mdx file.
 - 🔢 Support pagination
 
 ## You SHOULD change...
