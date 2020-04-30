@@ -10,7 +10,7 @@ if [[ -z $url ]]; then
   exit 1
 else
   slug="$(echo -n "${url}" | sed -e 's/[^[:alnum:]]/-/g' | tr -s '-' | tr A-Z a-z)"
-  touch ./src/contents/blog/$slug.mdx
+  touch ./content/blog/$slug.mdx
 fi
 
 read -p "Input title of the post. 👉" title
@@ -22,8 +22,8 @@ else
   now="$(date +'%FT%T.000Z')"
   echo "---
 title: $title
-date: '$now'
+date: $now
 ---
 
-<!-- Please write something here. -->" >./src/contents/blog/$slug.mdx
+<!-- Please write something here. -->" >./content/blog/$slug.mdx
 fi

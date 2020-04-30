@@ -14,7 +14,7 @@ const useUtterances = ({ id, repository }: Props) => {
     const config = {
       src: 'https://utteranc.es/client.js',
       repo: `${id}/${repository}`,
-      ['issue-term']: 'pathname',
+      'issue-term': 'pathname',
       label: 'Post Comment',
       theme: 'github-light',
       crossOrigin: 'anonymous',

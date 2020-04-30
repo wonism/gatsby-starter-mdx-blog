@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, StaticQuery, graphql } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
 
 import Seo from '@shared/Seo';
 import Title from '@shared/Title';
@@ -24,21 +24,13 @@ const Home = (): React.ReactElement => (
             <hr />
           </Title>
           {posts.map((post) => (
-            <Article key={post.node.id}>
-              <h2>
-                <Link to={post.node.fields.slug}>
-                  {post.node.frontmatter.title}
-                </Link>
-              </h2>
-              <div>
-                <small>
-                  {post.node.frontmatter.date}
-                </small>
-              </div>
-              <p>
-                {post.node.excerpt}
-              </p>
-            </Article>
+            <Article
+              key={post.node.id}
+              to={post.node.fields.slug}
+              title={post.node.frontmatter.title}
+              date={post.node.frontmatter.date}
+              excerpt={post.node.excerpt}
+            />
           ))}
         </>
       );

@@ -11,16 +11,37 @@ require('ts-node').register({
   },
 });
 
+const PAGE_SIZE = 3;
+
+const kebabCase = name => name.replace(/\s+/g, '-').toLowerCase();
+
+const createListPages = (createPage, { component, base, total, pageSize, context = {} }) => {
+  const pageCount = Math.ceil(total / pageSize);
+  const pages = Array.from({ length: pageCount }).map((_, index) => createPage({
+    path: `/${base}/${index + 1}`,
+    component,
+    context: {
+      base,
+      pageCount,
+      limit: pageSize,
+      skip: index * pageSize,
+      currentPage: index + 1,
+      ...context,
+    },
+  }));
+
+  return pages;
+};
+
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions;
   const typeDefs = `
     type MdxFrontmatter {
       title: String!
       draft: Boolean
-      tags: String
+      tags: [String]
       thumbnail: String
-      # TODO: Categorizing
-      # category: String
+      categories: [String]
     }
   `;
   createTypes(typeDefs);
@@ -28,7 +49,6 @@ exports.createSchemaCustomization = ({ actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  const component = resolve('./src/shared/templates/blog.tsx');
 
   const result = await graphql(`
     {
@@ -46,8 +66,25 @@ exports.createPages = async ({ graphql, actions }) => {
             frontmatter {
               title
               thumbnail
+              categories
             }
           }
+        }
+      }
+
+      allTags: allMdx {
+        group(field: frontmatter___tags) {
+          field
+          fieldValue
+          totalCount
+        }
+      }
+
+      allCategories: allMdx {
+        group(field: frontmatter___categories) {
+          field
+          fieldValue
+          totalCount
         }
       }
 
@@ -61,24 +98,73 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
-
     }
   `);
 
-  result.data.allMdx.edges.forEach((post, index, posts) => {
+  const { allMdx, allFile, allTags, allCategories } = result.data;
+
+  const tags = allTags.group.map(({ fieldValue }) => fieldValue);
+  const categories = allCategories.group.map(({ fieldValue }) => fieldValue);
+  const defaultContext = {
+    tags,
+    categories,
+  };
+
+  allMdx.edges.forEach((post, index, posts) => {
+    const path = post.node.fields.slug;
+
     const previous = index === posts.length - 1 ? null : posts[index + 1].node;
     const next = index === 0 ? null : posts[index - 1].node;
-    const thumbnailData = result.data.allFile.edges.find(({ node: { base } }) => base === post.node.frontmatter.thumbnail);
+    const thumbnailData = allFile.edges.find(({ node: { base } }) => base === post.node.frontmatter.thumbnail);
     const thumbnail = thumbnailData != null ? thumbnailData.node.publicURL : null;
 
     createPage({
-      path: post.node.fields.slug,
-      component,
+      path,
+      component: resolve('./src/templates/post.tsx'),
       context: {
         thumbnail,
         slug: post.node.fields.slug,
+        categories: post.node.fields.categories,
+        tags: post.node.fields.tags,
         previous,
         next,
+      },
+    });
+  });
+
+  createListPages(createPage, {
+    component: resolve('./src/templates/posts.tsx'),
+    base: 'posts',
+    total: allMdx.edges.length,
+    pageSize: PAGE_SIZE,
+    context: {
+      fieldValue: '',
+      ...defaultContext,
+    },
+  });
+
+  allTags.group.forEach((group) => {
+    createListPages(createPage, {
+      component: resolve('./src/templates/tags.tsx'),
+      base: `tags/${kebabCase(group.fieldValue)}`,
+      total: group.totalCount,
+      pageSize: PAGE_SIZE,
+      context: {
+        ...defaultContext,
+        ...group,
+      },
+    });
+  });
+
+  allCategories.group.forEach((group) => {
+    createListPages(createPage, {
+      component: resolve('./src/templates/categories.tsx'),
+      base: `categories/${kebabCase(group.fieldValue)}`,
+      total: group.totalCount,
+      pageSize: PAGE_SIZE,
+      context: {
+        ...defaultContext,
+        ...group,
       },
     });
   });

@@ -35,16 +35,19 @@ $ npm run build
 - 🤖 Support post scaffolding
   - You can just run `npm run new` then input url & title. (slugify the url automatically.)
 - ✏️ Draft version of your post
-  - You can just add `draft: true` below the date in mdx file
+  - You can just add `draft: true` below the date in mdx file.
+- Support **Category** and **Tag**
+  - You can just add `categories: ["Category"]` and `tags: ["Tag]` below the date in mdx file.
+- 🔢 Support pagination
 
 ## You SHOULD change...
-- Your picture in `src/contents/images/profile.png`
+- Your picture in `./content/images/profile.png`
+- Favicon in `./content/images/favicon.png`
+  - You can check the details for favicon in [Gatsby Plugin Manifest](https://www.gatsbyjs.org/packages/gatsby-plugin-manifest)
 - Your biography in `src/shared/Bio/index.tsx`
 - `gastby-config.js`
   - site meta data
   - google analytics tracking id
 
 ## Todo
-- [ ] Pagination
-- [ ] Categorize
 - [ ] Themes

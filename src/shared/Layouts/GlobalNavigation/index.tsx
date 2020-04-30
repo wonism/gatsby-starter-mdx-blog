@@ -6,7 +6,7 @@ import { maxWidth } from '@constants/styles';
 
 import { Border, Navigation, List } from './styled';
 
-const Gnb = (): React.ReactElement => (
+const GlobalNavigation = (): React.ReactElement => (
   <Border>
     <Navigation css={maxWidth}>
       <Link to="/">
@@ -24,7 +24,7 @@ const Gnb = (): React.ReactElement => (
           </Link>
         </li>
         <li>
-          <Link to="/posts">
+          <Link to="/posts/1">
             posts
           </Link>
         </li>
@@ -38,4 +38,4 @@ const Gnb = (): React.ReactElement => (
   </Border>
 );
 
-export default Gnb;
+export default GlobalNavigation;

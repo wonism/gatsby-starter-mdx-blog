@@ -2,34 +2,37 @@ const isProd = process.env.NODE_MODE === 'production';
 
 const pkg = require('./package.json');
 
-module.exports = {
-  // YOU SHOULD CHANGE SITE META DATA
-  siteMetadata: {
-    siteUrl: 'https://example.com',
-    title: 'Gatsby Starter MDX Blog',
-    description: 'Gatsby Starter for Blog with MDX',
-    author: 'wonism',
-    mail: 'yocee57@gmail.com',
-    keywords: pkg.keywords, // string[]
-    // to use utterances, install the app on https://github.com/apps/utterances
-    // you can find guidances on https://utteranc.es
-    github: {
-      id: 'wonism',
-      repository: 'utterances-test',
-    },
+// YOU SHOULD CHANGE SITE META DATA
+const siteMetadata = {
+  siteUrl: 'https://example.com',
+  title: 'Gatsby Starter MDX Blog',
+  description: 'Gatsby Starter for Blog with MDX',
+  author: 'wonism',
+  icon: 'content/images/favicon.png',
+  mail: 'yocee57@gmail.com',
+  keywords: pkg.keywords, // string[]
+  // to use utterances, install the app on https://github.com/apps/utterances
+  // you can find guidances on https://utteranc.es
+  github: {
+    id: 'wonism',
+    repository: 'utterances-test',
   },
+};
+
+module.exports = {
+  siteMetadata,
   plugins: [
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/contents/blog`,
+        path: `${__dirname}/content/blog`,
         name: 'blog',
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/contents/images`,
+        path: `${__dirname}/content/images`,
         name: 'images',
       },
     },
@@ -136,6 +139,18 @@ module.exports = {
         // host: '<<YOUR_SITE>>',
         sitemap: '/sitemap.xml',
         policy: [{ userAgent: '*', allow: '/' }],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: siteMetadata.title,
+        short_name: siteMetadata.title,
+        start_url: '/',
+        background_color: '#fff',
+        theme_color: '#ff3636',
+        display: 'minimal-ui',
+        icon: siteMetadata.icon,
       },
     },
     isProd ? 'gatsby-plugin-webpack-bundle-analyzer' : null,

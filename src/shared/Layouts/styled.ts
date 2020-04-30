@@ -22,7 +22,7 @@ export const globalStyles = css`
   }
 
   a {
-    text-decoration: none;
+    text-decoration: underline;
 
     &,
     &:focus,

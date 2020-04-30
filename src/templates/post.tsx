@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, graphql, PageProps } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { css } from '@emotion/core';
@@ -7,12 +7,12 @@ import { Site, Mdx } from '@utils/types';
 import Seo from '@shared/Seo';
 import Title from '@shared/Title';
 import Bio from '@shared/Bio';
+import Utterances from '@shared/Utterances';
 import { codeHighlight } from '@constants/styles';
 
-import Utterances from './Utterances';
 import { ThumbnailFrame, RendererWrapper, Navigation } from './styled';
 
-const Blog = ({
+const Post = ({
   data: {
     site: {
       siteMetadata: {
@@ -26,7 +26,7 @@ const Blog = ({
       frontmatter: {
         title,
         date,
-        tags,
+        tags = [],
       },
       body,
       excerpt,
@@ -37,7 +37,7 @@ const Blog = ({
     previous,
     next,
   },
-}: PageProps<{ site: Site, mdx: Mdx }, { thumbnail: string | null; previous: Mdx | null; next: Mdx | null }>) => (
+}: PageProps<{ site: Site; mdx: Mdx }, { thumbnail: string | null; previous: Mdx | null; next: Mdx | null }>) => (
   <>
     {thumbnail != null ? (
       <ThumbnailFrame>
@@ -49,7 +49,7 @@ const Blog = ({
       </ThumbnailFrame>
     ) : null}
     <Title>
-      <Seo title={title} description={excerpt} keywords={tags?.split(',')} thumbnail={thumbnail ?? undefined} showTitle />
+      <Seo title={title} description={excerpt} keywords={tags} thumbnail={thumbnail ?? undefined} showTitle />
     </Title>
 
     <small css={css`display: block; margin: 24px auto 12px;`}>
@@ -95,7 +95,7 @@ const Blog = ({
   </>
 );
 
-export default Blog;
+export default Post;
 
 export const pageQuery = graphql`
   query($slug: String!) {

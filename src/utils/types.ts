@@ -21,7 +21,8 @@ export interface Site {
 interface Frontmatter {
   title: string;
   date: string;
-  tags?: string;
+  tags?: string[];
+  categories?: string[];
   image?: string;
 }
 
@@ -56,3 +57,11 @@ interface BoundActionCreators {
 export type GatsbyCreatePages = (
   fns: { graphql: any; boundActionCreators: BoundActionCreators }
 ) => void;
+
+export interface Context {
+  pageCount: number;
+  currentPage: number;
+  fieldValue: string;
+  tags: string[];
+  categories: string[];
+}
