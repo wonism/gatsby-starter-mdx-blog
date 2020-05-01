@@ -5,7 +5,7 @@ interface Props {
   repository: string;
 }
 
-const useUtterances = ({ id, repository }: Props) => {
+const Utterances = ({ id, repository }: Props) => {
   const container$ = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,23 +28,9 @@ const useUtterances = ({ id, repository }: Props) => {
     container$.current?.appendChild(script);
   }, [id, repository]);
 
-  useEffect(() => {
-    const pid = setInterval(() => {
-      const iframe$ = container$.current?.querySelector('iframe');
-
-      if (iframe$ != null) {
-        clearInterval(pid);
-      }
-    }, 17);
-
-    return () => {
-      clearInterval(pid);
-    };
-  }, []);
-
   return (
     <div ref={container$} />
   );
 };
 
-export default useUtterances;
+export default Utterances;
