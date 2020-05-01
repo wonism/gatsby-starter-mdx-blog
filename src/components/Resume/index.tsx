@@ -4,6 +4,7 @@ import { css } from '@emotion/core';
 
 import Title from '@shared/Title';
 import Seo from '@shared/Seo';
+import Spinner from '@shared/Spinner';
 import { ResumeBody } from '@models/resume';
 import resumeData from '@constants/resume';
 import useBuild from '@hooks/useBuild';
@@ -79,7 +80,11 @@ const Resume = (): React.ReactElement => {
             </p>
           </div>
         </>
-      ) : null}
+      ) : (
+        <Spinner>
+          Generating Resume...
+        </Spinner>
+      )}
     </section>
   );
 };
