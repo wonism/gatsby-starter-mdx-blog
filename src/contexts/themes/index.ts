@@ -2,7 +2,7 @@ import { createContext, Dispatch, SetStateAction } from 'react';
 
 import { Pair } from '@utils/types';
 
-type Theme = 'dark' | 'light';
+export type Theme = 'dark' | 'light';
 
 export interface State {
   theme: Theme;

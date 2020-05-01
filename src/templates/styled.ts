@@ -1,8 +1,8 @@
-import styled from '@emotion/styled';
+import styled from '@constants/styles';
 
 export const ThumbnailFrame = styled.div`
   position: relative;
-  margin: -100px auto 50px;
+  margin: -50px auto 50px;
   height: 200px;
   overflow: hidden;
 
@@ -28,7 +28,7 @@ export const RendererWrapper = styled.div`
   line-height: 1.6;
   font-size: 24px;
   word-break: break-word;
-  color: rgba(85, 85, 85, .85);
+  color: ${(props) => props.theme.contentColor};
 
   h2 {
     font-size: 40px;

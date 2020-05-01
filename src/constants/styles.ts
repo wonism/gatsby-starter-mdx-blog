@@ -1,4 +1,41 @@
 import { css } from '@emotion/core';
+import styled, { CreateStyled } from '@emotion/styled';
+
+import { Theme } from '@contexts/themes';
+
+export const mainColor = '#ff3636';
+
+interface Colors {
+  color: string;
+  backgroundColor: string;
+  inputBackgroundColor: string;
+  placeholderColor: string;
+  chipColor: string;
+  contentColor: string;
+}
+
+type ThemedStyle = Record<Theme, Colors>;
+
+export const themes: ThemedStyle = {
+  dark: {
+    color: '#3e3e3e',
+    backgroundColor: '#fff',
+    inputBackgroundColor: 'rgba(80, 80, 80, .4)',
+    placeholderColor: 'rgba(255, 255, 255, .8)',
+    chipColor: '#555',
+    contentColor: 'rgba(211, 211, 211, .85)',
+  },
+  light: {
+    color: '#fff',
+    backgroundColor: '#3e3e3e',
+    inputBackgroundColor: 'rgba(222, 222, 222, .4)',
+    placeholderColor: 'rgba(50, 50, 50, .8)',
+    chipColor: '#e5e5e5',
+    contentColor: 'rgba(85, 85, 85, .85)',
+  },
+};
+
+export default styled as CreateStyled<Colors>;
 
 export const mobileWidth = 414;
 

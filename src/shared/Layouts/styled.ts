@@ -2,7 +2,7 @@ import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import emotionReset from 'emotion-reset';
 
-import { gnbHeight, footerHeight, border } from '@constants/styles';
+import { mainColor, gnbHeight, footerHeight, border } from '@constants/styles';
 
 export const globalStyles = css`
   ${emotionReset}
@@ -17,8 +17,24 @@ export const globalStyles = css`
   }
 
   body {
-    color: #555;
     line-height: 1.5;
+    transition: all .4s ease-in .1s;
+
+    &,
+    &.light-mode {
+      color: #3e3e3e;
+      background: #fff;
+    }
+
+    &.dark-mode {
+      color: #fff;
+      background: #3e3e3e;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+      background: #3e3e3e;
+    }
   }
 
   a {
@@ -27,12 +43,12 @@ export const globalStyles = css`
     &,
     &:focus,
     &:visited {
-      color: #555;
+      color: inherit;
     }
 
     &:active,
     &:hover {
-      color: #ff3636;
+      color: ${mainColor};
       text-decoration: underline;
     }
   }
@@ -48,6 +64,7 @@ export const globalStyles = css`
 `;
 
 export const Main = styled.main`
+  position: relative;
   padding-top: 100px;
   padding-bottom: 100px;
   min-height: calc(100vh - ${footerHeight}px - ${gnbHeight}px);

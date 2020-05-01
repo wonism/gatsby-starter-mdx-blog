@@ -1,14 +1,23 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
-import styled from '@emotion/styled';
 
+import styled from '@constants/styles';
 import { kebabCase } from '@utils/string';
 
 const Nav = styled.nav`
   &:last-child {
     margin-bottom: 20px;
   }
+`;
+
+const Chip = styled.span`
+  display: inline-block;
+  margin: 4px 4px 4px 0;
+  padding: 2px 8px;
+  background-color: ${(props) => props.theme.chipColor};
+  border-radius: 8px;
+  font-size: 85%;
 `;
 
 interface Props {
@@ -25,18 +34,9 @@ const LocalNavigation = ({ tags, categories }: Props) => (
         </span>
         {tags.map((tag) => (
           <Link key={tag} to={`/tags/${kebabCase(tag)}/1`}>
-            <span
-              css={css`
-                display: inline-block;
-                margin: 4px 4px 4px 0;
-                padding: 2px 8px;
-                background-color: #e5e5e5;
-                border-radius: 8px;
-                font-size: 85%;
-              `}
-            >
+            <Chip>
               {tag}
-            </span>
+            </Chip>
           </Link>
         ))}
       </Nav>

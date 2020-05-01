@@ -1,4 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
+import { css } from '@emotion/core';
+
+import Context from '@contexts/themes';
 
 interface Props {
   id: string;
@@ -6,6 +9,7 @@ interface Props {
 }
 
 const Utterances = ({ id, repository }: Props) => {
+  const [state] = useContext(Context);
   const container$ = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -16,7 +20,7 @@ const Utterances = ({ id, repository }: Props) => {
       repo: `${id}/${repository}`,
       'issue-term': 'pathname',
       label: 'Post Comment',
-      theme: 'github-light',
+      theme: `github-${state.theme}`,
       crossOrigin: 'anonymous',
       async: 'true',
     };
@@ -26,10 +30,10 @@ const Utterances = ({ id, repository }: Props) => {
     });
 
     container$.current?.appendChild(script);
-  }, [id, repository]);
+  }, [state.theme, id, repository]);
 
   return (
-    <div ref={container$} />
+    <div ref={container$} css={css`.utterances { margin-top: 40px; }`} />
   );
 };
 

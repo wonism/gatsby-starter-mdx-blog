@@ -1,5 +1,6 @@
-import styled from '@emotion/styled';
 import ContactForm from 'react-mail-form';
+
+import styled, { mainColor } from '@constants/styles';
 
 export const Form = styled(ContactForm)`
   text-align: center;
@@ -11,11 +12,19 @@ export const Form = styled(ContactForm)`
     padding: .25em .5em;
     width: 100%;
     line-height: 1.5;
-    background-color: rgba(222, 222, 222, .2);
     border: none;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid ${(props) => props.theme.chipColor};
     border-radius: 5px;
     font-size: 20px;
+
+    & {
+      color: ${(props) => props.theme.color};
+      background-color: ${(props) => props.theme.inputBackgroundColor};
+    }
+
+    &::placeholder {
+      color: ${(props) => props.theme.placeholderColor};
+    }
   }
 
   textarea {
@@ -26,7 +35,7 @@ export const Form = styled(ContactForm)`
     display: inline-block;
     padding: .7em 1em;
     border-radius: 10px;
-    background: #ff3636;
+    background: ${mainColor};
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 1px;

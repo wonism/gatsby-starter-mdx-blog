@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 
+import { mainColor } from '@constants/styles';
+
 const Title = styled.div`
   line-height: 1.1;
-  color: #ff3636;
+  color: ${mainColor};
   font-size: 60px;
   font-weight: 700;
 

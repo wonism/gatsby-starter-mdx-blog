@@ -3,6 +3,7 @@ import { Global } from '@emotion/core';
 
 import ThemesContainer from '@containers/Themes';
 import { maxWidth } from '@constants/styles';
+import ThemesSwitch from '@shared/ThemesSwitch';
 
 import GlobalNavigation from './GlobalNavigation';
 import Footer from './Footer';
@@ -17,6 +18,7 @@ const Layouts = ({ element }: Props): React.ReactElement => (
     <Global styles={globalStyles} />
     <GlobalNavigation />
     <Main css={maxWidth}>
+      <ThemesSwitch />
       {element}
     </Main>
     <Footer />

@@ -39,6 +39,7 @@ $ npm run build
 - 🔖 Support **Category** and **Tag**
   - You can just add `categories: ["Category"]` and `tags: ["Tag"]` below the `date` in mdx file.
 - 🔢 Support pagination
+- 🌙 Support `dark mode`
 
 ## You SHOULD change...
 - Your picture in `./content/images/profile.png`
@@ -48,6 +49,3 @@ $ npm run build
 - `gastby-config.js`
   - site meta data
   - google analytics tracking id
-
-## Todo
-- [ ] Themes

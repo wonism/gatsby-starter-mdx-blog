@@ -185,6 +185,7 @@ module.exports = {
     'prefer-spread': off,
     'prefer-const': error,
     quotes: [error, 'single', { allowTemplateLiterals: true }],
+    radix: [error, 'as-needed'],
     semi: off,
   },
   overrides: [{
