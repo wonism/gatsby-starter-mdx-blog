@@ -14,6 +14,8 @@ module.exports = {
     '.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/__mocks__/file-mock.js',
     '^@components\/(.*)$/': '~/src/components/$1',
     '^@containers\/(.*)$/': '~/src/containers/$1',
+    '^@hooks\/(.*)$/': '~/src/hooks/$1',
+    '^@models\/(.*)$/': '~/src/models/$1',
     '^@shared\/(.*)$/': '~/src/shared/$1',
     '^@utils\/(.*)$/': '~/src/utils/$1',
     ...pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>/src/' }),

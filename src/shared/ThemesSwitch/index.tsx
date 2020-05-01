@@ -4,6 +4,7 @@ import Toggle from 'react-toggle';
 import 'react-toggle/style.css';
 
 import Context from '@contexts/themes';
+import { themeKey } from '@constants/storage';
 import { mainColor } from '@constants/styles';
 import { shadeColor } from '@utils/string';
 
@@ -11,7 +12,7 @@ const ThemesSwitch = () => {
   const [state, setState] = useContext(Context);
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem('@@blog/theme');
+    const storedTheme = localStorage.getItem(themeKey);
 
     if (storedTheme === 'dark' || storedTheme === 'light') {
       setState({ theme: storedTheme });
@@ -26,11 +27,11 @@ const ThemesSwitch = () => {
     if (state.theme === 'dark') {
       document.body.classList?.remove('light-mode');
       document.body.classList?.add('dark-mode');
-      localStorage.setItem('@@blog/theme', 'dark');
+      localStorage.setItem(themeKey, 'dark');
     } else {
       document.body.classList?.remove('dark-mode');
       document.body.classList?.add('light-mode');
-      localStorage.setItem('@@blog/theme', 'light');
+      localStorage.setItem(themeKey, 'light');
     }
   }, [state.theme]);
 

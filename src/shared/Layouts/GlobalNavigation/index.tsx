@@ -24,6 +24,11 @@ const GlobalNavigation = (): React.ReactElement => (
           </Link>
         </li>
         <li>
+          <Link to="/resume">
+            resume
+          </Link>
+        </li>
+        <li>
           <Link to="/posts/1">
             posts
           </Link>

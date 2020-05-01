@@ -53,6 +53,8 @@ module.exports = {
         ['@constants', './src/constants'],
         ['@containers', './src/containers'],
         ['@contexts', './src/contexts'],
+        ['@hooks', './src/hooks'],
+        ['@models', './src/models'],
         ['@pages', './src/pages'],
         ['@shared', './src/shared'],
         ['@utils', './src/utils'],
@@ -198,6 +200,14 @@ module.exports = {
     files: ['src/utils/types.ts'],
     rules: {
       '@typescript-eslint/no-explicit-any': off,
+    },
+  }, {
+    files: [
+      'src/constants/resume.ts',
+      'src/utils/pdf.ts',
+    ],
+    rules: {
+      'max-len': off,
     },
   }, {
     files: [

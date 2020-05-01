@@ -53,6 +53,12 @@ export const globalStyles = css`
     }
   }
 
+  a,
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+
   small {
     font-size: 75%;
   }

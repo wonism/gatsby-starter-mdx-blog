@@ -11,7 +11,7 @@ require('ts-node').register({
   },
 });
 
-const PAGE_SIZE = 3;
+const PAGE_SIZE = 5;
 
 const kebabCase = name => name.replace(/\s+/g, '-').toLowerCase();
 
@@ -170,6 +170,18 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 };
 
+/**
+ * NOTE:
+ * If you want to remove resume page, uncomment below lines.
+ * You also need to remove anchor tag for linking to resume page in `src/shared/Layouts/GlobalNavigation`.
+ */
+// exports.onCreatePage = ({ page, actions }) => {
+  // const { deletePage } = actions;
+  // if (page.path === '/resume/') {
+    // deletePage(page);
+  // }
+// };
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
@@ -192,6 +204,8 @@ exports.onCreateWebpackConfig = ({ actions }) => {
         '@constants': resolve(__dirname, 'src/constants'),
         '@containers': resolve(__dirname, 'src/containers'),
         '@contexts': resolve(__dirname, 'src/contexts'),
+        '@hooks': resolve(__dirname, 'src/hooks'),
+        '@models': resolve(__dirname, 'src/models'),
         '@pages': resolve(__dirname, 'src/pages'),
         '@shared': resolve(__dirname, 'src/shared'),
         '@utils': resolve(__dirname, 'src/utils'),
