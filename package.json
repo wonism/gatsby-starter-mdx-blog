@@ -8,7 +8,7 @@
     "clean": "gatsby clean",
     "start": "gatsby develop -H 0.0.0.0",
     "build:font": "./scripts/font.sh",
-    "build": "NODE_ENV=production gatsby build",
+    "build": "npm run build:font && NODE_ENV=production gatsby build",
     "serve": "gatsby serve -H 0.0.0.0",
     "lint": "eslint --config .eslintrc.js --fix",
     "lint:all": "eslint --config .eslintrc.js --fix 'src/**/*.{ts,tsx}'",
