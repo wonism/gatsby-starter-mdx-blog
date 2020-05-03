@@ -1,6 +1,6 @@
 {
   "name": "gatsby-starter-mdx-blog",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Gatsby Starter for Blog with MDX",
   "main": "n/a",
   "scripts": {
@@ -8,7 +8,8 @@
     "clean": "gatsby clean",
     "start": "gatsby develop -H 0.0.0.0",
     "build:font": "./scripts/font.sh",
-    "build": "npm run build:font && NODE_ENV=production gatsby build",
+    "postinstall": "npm run build:font",
+    "build": "NODE_ENV=production gatsby build",
     "serve": "gatsby serve -H 0.0.0.0",
     "lint": "eslint --config .eslintrc.js --fix",
     "lint:all": "eslint --config .eslintrc.js --fix 'src/**/*.{ts,tsx}'",

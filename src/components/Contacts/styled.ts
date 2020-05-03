@@ -18,7 +18,7 @@ export const Form = styled(ContactForm)`
     font-size: 20px;
 
     & {
-      color: ${(props) => props.theme.color};
+      color: ${(props) => props.theme.backgroundColor};
       background-color: ${(props) => props.theme.inputBackgroundColor};
     }
 
